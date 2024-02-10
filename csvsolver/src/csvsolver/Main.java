@@ -47,7 +47,7 @@ public class Main {
 		try {
 			num=Integer.valueOf(value);
 		}catch(NumberFormatException ex){
-			if(value.length()>2) throw new IllegalArgumentException("invalid cell");
+			if(!map.containsKey(cell)) throw new IllegalArgumentException("invalid cell");
 			num=map.get(value);
 		}
 		
