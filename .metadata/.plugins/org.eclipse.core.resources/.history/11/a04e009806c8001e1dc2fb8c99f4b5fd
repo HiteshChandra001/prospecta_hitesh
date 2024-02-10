@@ -1,0 +1,44 @@
+package csvsolver;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+	
+	 Map<String,Integer> map=new HashMap<>();
+	
+	public void addValue(String cell,String value) {
+		if(cell.length()>2) throw new RuntimeException("invalid cell");
+		
+		if(value.charAt(0)=='=') {
+			int ind=1;
+			
+			while(ind==value.length()) {
+				StringBuilder sb = new StringBuilder();
+				while(value.charAt(ind)!='+') {
+					sb.append(value.charAt(ind));
+				}
+				
+				System.out.println(sb);
+			}
+		}else {
+			int val = Integer.valueOf(value);
+			map.put(cell,val);
+		}
+		
+		
+	}
+	
+	public static void main(String[] args) {
+		Main main = new Main();
+		
+		main.addValue("A1", "5");
+		main.addValue("A2", "7");
+		main.addValue("A3", "9");
+		main.addValue("B1", "3");
+		main.addValue("B2", "8");
+		main.addValue("B3", "4+5");
+		
+		System.out.println(main.map);
+	}
+}

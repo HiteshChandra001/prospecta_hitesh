@@ -1,0 +1,34 @@
+package com.client.model;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+
+public class Entry {
+	private String API;
+	private String Description;
+	private String Auth;
+	private boolean HTTPS;
+	private String Cors;
+	private String Link;
+	private String Category;
+	
+	@JsonCreator
+	public Entry(String aPI, String description, String auth, boolean hTTPS, String cors, String link,
+			String category) {
+		super();
+		API = aPI;
+		Description = description;
+		Auth = auth;
+		HTTPS = hTTPS;
+		Cors = cors;
+		Link = link;
+		Category = category;
+	}
+	
+	
+}

@@ -1,0 +1,25 @@
+package csvsolver;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+	
+	private Map<String,Integer> map=new HashMap<>();
+	
+	public int addValue(String cell,String value) {
+		if(cell.length()>2) throw new RuntimeException("invalid cell");
+		
+		if(value.charAt(0)=='=') {
+			
+		}else {
+			map.put(cell,Integer.valueOf(value));
+		}
+		
+		return 0;
+	}
+	
+	public static void main(String[] args) {
+		
+	}
+}

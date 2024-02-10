@@ -1,0 +1,8 @@
+package com.client.model;
+
+import java.util.List;
+
+public class Result {
+	private int count;
+	private List<Entry> entries;
+}

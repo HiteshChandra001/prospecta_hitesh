@@ -1,0 +1,36 @@
+package com.client.controller;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.client.model.Result;
+
+@RestController
+@RequestMapping("/client")
+public class ClientController {
+	
+	@GetMapping("/category:{cat}")
+	public ResponseEntity<Result> get(@PathVariable String cat){
+		String url = "https://api.publicapis.org/entries";
+		RestTemplate rt = new RestTemplate();
+		
+		Result res = rt.getForObject(url, Result.class);
+		
+//		List<Entry> entries = res.getEntries();
+		
+//		List<Content> contents=new ArrayList<>();
+//		
+//		entries.stream().filter(e->e.getCategory().equalsIgnoreCase(cat)).forEach(e->contents.add(new Content(e.getTitle(),e.getDescription())));
+//		
+		return new ResponseEntity<>(res,HttpStatus.OK);
+	}
+	
+
+	
+
+}

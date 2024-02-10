@@ -1,0 +1,19 @@
+package com.client.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+
+public class Entry {
+
+	private String api;
+	private String description;
+	private String auth;
+	private boolean http;
+	private String cors;
+	private String category;	
+}

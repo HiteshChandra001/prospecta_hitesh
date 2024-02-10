@@ -1,0 +1,20 @@
+package com.client.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+@RestController
+public class ClientController {
+	
+	private RestTemplate rt = new RestTemplate();
+	
+	
+	public ResponseEntity<List<Content>> get(){
+		String url = "https://api.publicapis.org/entries";
+		
+	}
+	
+
+	
+
+}

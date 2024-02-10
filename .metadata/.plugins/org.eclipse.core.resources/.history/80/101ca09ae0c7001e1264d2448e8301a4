@@ -1,0 +1,20 @@
+package com.client.model;
+
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+
+public class Api {
+	private String title;
+	private String description;
+	private String auth;
+	private boolean http;
+	private String cors;
+	private String category;	
+}

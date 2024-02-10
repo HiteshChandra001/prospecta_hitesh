@@ -1,0 +1,36 @@
+package com.client.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.client.model.Content;
+import com.client.model.Entry;
+import com.client.model.Result;
+
+@RestController
+public class ClientController {
+	
+	public ResponseEntity<List<Content>> get(){
+		String url = "https://api.publicapis.org/entries";
+		RestTemplate rt = new RestTemplate();
+		
+		Result res = rt.getForObject(url, Result.class);
+		
+		List<Entry> entries = result.getEntries();
+		
+		List<Content> contents=new ArrayList<>(); 
+		
+		
+		
+		
+		return null;
+	}
+	
+
+	
+
+}

@@ -1,0 +1,12 @@
+package com.client.model;
+
+public class Entry {
+	private String api;
+	private String description;
+	private String auth;
+	private boolean http;
+	private String cors;
+	private String category;
+	
+	
+}

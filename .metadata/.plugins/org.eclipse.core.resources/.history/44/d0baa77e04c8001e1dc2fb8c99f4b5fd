@@ -1,0 +1,21 @@
+package csvsolver;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+	
+	private Map<String,Integer> map=new HashMap<>();
+	
+	int addValue(String cell,String value) {
+		if(value.charAt(0)=='=') {
+			
+		}
+		
+		return 0;
+	}
+	
+	public static void main(String[] args) {
+		
+	}
+}
