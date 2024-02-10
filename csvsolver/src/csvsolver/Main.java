@@ -10,27 +10,54 @@ public class Main {
 	public void addValue(String cell,String value) {
 		if(cell.length()>2) throw new IllegalArgumentException("invalid cell");
 		
+		int num=0;
+		
 		if(value.charAt(0)=='=') {
 			
-		}else {
+			int ind=1;
 			
-			int val;
+			while(ind<value.length()) {
+				
+				StringBuilder sb=new StringBuilder();
+				
+				while(ind<value.length() && value.charAt(ind)!='+') {
+					sb.append(value.charAt(ind));
+					ind++;
+				}
+				
+				num+=findValue(sb.toString(),map);
+				
+				ind++;
+			}
+		}else {
 			try {
-				val = Integer.valueOf(value);
+				num = Integer.valueOf(value);
 			}catch(NumberFormatException ex) {
 				throw new IllegalArgumentException("invalid value");
 			}
 			
-			map.put(cell,val);
+			
 		}
+		map.put(cell,num);
 	}
 	
-	public int findValue(String value) {
+	public int findValue(String value,Map<String,Integer> map) {
+		int num;
 		
+		try {
+			num=Integer.valueOf(value);
+		}catch(NumberFormatException ex){
+			if(value.length()>2) throw new IllegalArgumentException("invalid cell");
+			num=map.get(value);
+		}
+		
+		return num;
 	}
 	
 	public static void main(String[] args) {
 		Main main = new Main();
+		
+//	test case	A1: 5, A2: 7, A3: 9, B1: 3, B2: 8, B3: =4+5, C1: =5+A1, C2: =A2+B2, C3: =C2+B3
 		
 		main.addValue("A1", "5");
 		main.addValue("A2", "7");
@@ -38,6 +65,9 @@ public class Main {
 		main.addValue("B1", "3");
 		main.addValue("B2", "8");
 		main.addValue("B3", "=4+5");
+		main.addValue("C1", "=5+A1");
+		main.addValue("C2", "=A2+B2");
+		main.addValue("C3", "=C2+B3");
 		
 		System.out.println(main.map);
 	}
