@@ -30,9 +30,8 @@ Documentation and API Contracts <br/>
 
 ### i.  First I thought about data structure, where I can store calculated data (hashmap), after then methods to calculate (extract value and cell address from input ) the result   <br>
 ### ii. type of errors wrong input as invalid cell and invalid value  <br>
-### ii. user can break the code my giving the wrong cell address whose value is not calculated and by giving the wrong number value.  <br>
-
-
+### ii. user can break the code my giving the wrong cell address whose value is not calculated and by giving the wrong number value.  <be>
+### limitation : only working with + operator for now.
 
 
 
