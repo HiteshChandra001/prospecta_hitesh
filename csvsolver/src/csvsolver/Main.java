@@ -8,7 +8,7 @@ public class Main {
 	 Map<String,Integer> map=new HashMap<>();
 	
 	public void addValue(String cell,String value) {
-		if(cell.length()>2) throw new IllegalArgumentException("invalid cell");
+		if(!map.containsKey(cell)) throw new IllegalArgumentException("invalid cell");
 		
 		int num=0;
 		
