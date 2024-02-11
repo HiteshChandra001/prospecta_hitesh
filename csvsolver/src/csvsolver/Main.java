@@ -2,13 +2,18 @@ package csvsolver;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Main {
 	
-	 Map<String,Integer> map=new HashMap<>();
+	private Map<String,Integer> map=new HashMap<>();
 	
+	
+	public Map<String, Integer> getMap() {
+		return map;
+	}
+
 	public void addValue(String cell,String value) {
-		if(!map.containsKey(cell)) throw new IllegalArgumentException("invalid cell");
 		
 		int num=0;
 		
@@ -25,7 +30,7 @@ public class Main {
 					ind++;
 				}
 				
-				num+=findValue(sb.toString(),map);
+				num+=findValue(sb.toString());
 				
 				ind++;
 			}
@@ -33,21 +38,22 @@ public class Main {
 			try {
 				num = Integer.valueOf(value);
 			}catch(NumberFormatException ex) {
-				throw new IllegalArgumentException("invalid value");
+				throw new IllegalArgumentException("invalid value: "+num);
 			}
 			
 			
 		}
 		map.put(cell,num);
+		
 	}
 	
-	public int findValue(String value,Map<String,Integer> map) {
+	public int findValue(String value) {
 		int num;
 		
 		try {
 			num=Integer.valueOf(value);
 		}catch(NumberFormatException ex){
-			if(!map.containsKey(cell)) throw new IllegalArgumentException("invalid cell");
+			if(!map.containsKey(value)) throw new IllegalArgumentException("invalid cell: "+ value);
 			num=map.get(value);
 		}
 		
@@ -55,20 +61,42 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
-		Main main = new Main();
+		Scanner sc=new Scanner(System.in);
 		
-//	test case	A1: 5, A2: 7, A3: 9, B1: 3, B2: 8, B3: =4+5, C1: =5+A1, C2: =A2+B2, C3: =C2+B3
+		Main main=new Main();
 		
-		main.addValue("A1", "5");
-		main.addValue("A2", "7");
-		main.addValue("A3", "9");
-		main.addValue("B1", "3");
-		main.addValue("B2", "8");
-		main.addValue("B3", "=4+5");
-		main.addValue("C1", "=5+A1");
-		main.addValue("C2", "=A2+B2");
-		main.addValue("C3", "=C2+B3");
+		int choice=1;
+		System.out.println("welcome to CSV Services");
 		
-		System.out.println(main.map);
+		while(choice != 0) {
+			
+			System.out.println("enter 1 to enter values");
+			System.out.println("enter 2 to show result");
+			System.out.println("enter 0 to exit");
+			
+			System.out.print("enter: ");
+			choice=sc.nextInt();
+			if(choice == 0) break;
+			else if(choice == 2) {
+				System.out.println("Result: "+main.getMap());
+				continue;
+			}else if(choice != 1) {
+				System.out.println("invalid input");
+				continue;
+			}
+			
+			System.out.print("enter cell address : ");
+			String cell=sc.next();
+			System.out.print("enter value : ");
+			String val=sc.next();
+			
+			main.addValue(cell,val);
+		}
+		
+		System.out.println("thank you for using our services");
+		sc.close();
+		
+		
+		
 	}
 }
